@@ -42,17 +42,12 @@ function quizzReducer(state, action) {
 
     case "CHECK_ANSWER":
       //checar se o item selecionado é o correto
-      const x = 10;
-
       if (state.questions[state.currentQuestion].answer === action.payload)
         return {
           ...state,
           answer: true,
         };
 
-      return state;
-
-    default:
       return state;
   }
 }
