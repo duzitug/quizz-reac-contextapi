@@ -5,7 +5,7 @@ import Question from "../components/Question.jsx";
 import GameOver from "../components/GameOver.jsx";
 
 function App() {
-  const [quizzState, dispatch] = React.useContext(QuizzContext);
+  const [quizzState] = React.useContext(QuizzContext);
 
   return (
     <div>
