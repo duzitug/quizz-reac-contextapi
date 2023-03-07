@@ -4,7 +4,7 @@ async function userSignIn({ email, password }) {
   const { data } = await axios({
     data: { email, password },
     method: "POST",
-    url: `http://localhost:8080/user/signIn`,
+    url: `https://quizz-backend-nodejs-express.herokuapp.com/user/signIn`,
   });
 
   return data;
