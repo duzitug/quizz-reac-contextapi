@@ -15,28 +15,34 @@ import CriarQuestao from "../components/estudo/CriarQuestao.jsx";
 import Hero from "../components/Hero.jsx";
 import Estrutura from "../components/Estrutura.jsx";
 import Login from "../components/Login.jsx";
+import LoginContextProvider from "../context/AuthContextProvider.jsx";
+import LoginPage from "../page/LoginPage.jsx";
 
 function App() {
   const [quizzState] = React.useContext(QuizzContext);
 
   return (
-    <BrowserRouter>
-      <Routes>
-        {/* <Route path="/" element={<Hero />} /> */}
+    <LoginContextProvider>
+      <BrowserRouter>
+        <Routes>
+          {/* <Route path="/" element={<Hero />} /> */}
 
-        <Route path="/" element={<Estrutura />} />
+          <Route element={<Estrutura />}>
+            <Route path="/" element={<Home />} />
 
-        <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<LoginPage />} />
 
-        <Route path="/userSignIn" element={<UserSignIn />} />
-        <Route path="/userSignUp" element={<UserSignUp />} />
-        <Route path="/createQuestion" element={<CreateQuestion />} />
-        <Route path="/listQuestion" element={<ListQuestion />} />
+            <Route path="/userSignIn" element={<UserSignIn />} />
+            <Route path="/userSignUp" element={<UserSignUp />} />
+            <Route path="/createQuestion" element={<CreateQuestion />} />
+            <Route path="/listQuestion" element={<ListQuestion />} />
+          </Route>
 
-        {/* <Route path="/" element={<Home />} /> */}
-        {/* <Route path="/" element={<CriarQuestao />} /> */}
-      </Routes>
-    </BrowserRouter>
+          {/* <Route path="/" element={<Home />} /> */}
+          {/* <Route path="/" element={<CriarQuestao />} /> */}
+        </Routes>
+      </BrowserRouter>
+    </LoginContextProvider>
 
     // <div>
     //   {quizzState.gameStage === "Start" && <Welcome />}
