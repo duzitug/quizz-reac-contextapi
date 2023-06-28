@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import {
   AppstoreOutlined,
   MailOutlined,
@@ -12,17 +13,28 @@ const items = [
     icon: <SettingOutlined />,
     children: [
       {
+        label: "Início",
+      },
+      {
         label: "Logar",
+      },
+      {
+        label: "Sobre",
       },
     ],
   },
-  { label: "Sobre" },
 ];
 const Cabecalho = () => {
   const [current, setCurrent] = useState("mail");
+
+  const navigate = useNavigate();
   const onClick = (e) => {
     console.log("click ", e);
     setCurrent(e.key);
+    e.key === "tmp-1" ? console.log("tmp-1") : console.log("tmp-0");
+
+    if (e.key === "tmp-0") navigate("/login");
+    else navigate("sobre");
   };
   return (
     <Menu
