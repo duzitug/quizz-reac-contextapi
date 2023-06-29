@@ -190,7 +190,7 @@ function RichTextEditor() {
                     imageUrl,
                   },
                 })
-                .then((response) => {
+                .then(() => {
                   messageApi.open({
                     key,
                     type: "success",
