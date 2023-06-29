@@ -7,7 +7,7 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { Button, Spin, Space, message } from "antd";
+import { Button, Spin, Space, message, Input, Row, Col } from "antd";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -36,6 +36,9 @@ let quillRef = null;
 function RichTextEditor() {
   const [value, setValue] = React.useState("");
   const [imageUrl, setImageUrl] = React.useState("");
+  const [title, setTitle] = React.useState("");
+  const [description, setDescription] = React.useState("");
+
   const [messageApi, contextHolder] = message.useMessage();
   const key = "updatable";
 
@@ -124,61 +127,86 @@ function RichTextEditor() {
     >
       {contextHolder}
 
+      <Row>
+        <Col style={{ margin: "auto" }} span={16}>
+          <Input
+            placeholder="Título do artigo"
+            name="title"
+            value={title}
+            onchange={setTitle}
+          />
+        </Col>
+      </Row>
+
+      <Row>
+        <Col style={{ margin: "auto" }} span={16}>
+          <Input
+            placeholder="descrição"
+            name="description"
+            value={description}
+            onchange={setDescription}
+          />
+        </Col>
+      </Row>
+
       {loading && (
         <div style={{ textAlign: "center" }}>
           <Spin size="large" />
         </div>
       )}
 
-      <ReactQuill
-        ref={(el) => {
-          reactQuillRef = el;
-        }}
-        theme="snow"
-        value={value}
-        onChange={(value) => {
-          setValue(value);
-        }}
-        formats={formats}
-        modules={modules}
-        style={{
-          width: "60%",
-          margin: "auto",
-          height: "30rem",
-        }}
-      />
-      <Button
-        onClick={() => {
-          console.log(value);
+      <Row>
+        <Col style={{ margin: "auto" }} span={16}>
+          <ReactQuill
+            ref={(el) => {
+              reactQuillRef = el;
+            }}
+            theme="snow"
+            value={value}
+            onChange={(value) => {
+              setValue(value);
+            }}
+            formats={formats}
+            modules={modules}
+            style={{}}
+            placeholder="Escreva aqui"
+          />
+        </Col>
+      </Row>
 
-          messageApi.open({
-            key,
-            type: "loading",
-            content: "Criando artigo...",
-          });
-
-          axios
-            .post("http://localhost:3000/api/article", {
-              article: {
-                title: "titulo do artigo 2",
-                description: "description 2",
-                body: value,
-                imageUrl,
-              },
-            })
-            .then((response) => {
-              console.log(response);
+      <Row>
+        <Col style={{ margin: "auto" }} span={16}>
+          <Button
+            onClick={() => {
               messageApi.open({
                 key,
-                type: "success",
-                content: "Artigo criado com sucesso.",
-                duration: 2,
+                type: "loading",
+                content: "Criando artigo...",
               });
-            });
-        }}
-      >
-        Enviar
-      </Button>
+
+              axios
+                .post("http://localhost:3000/api/article", {
+                  article: {
+                    title,
+                    description,
+                    body: value,
+                    imageUrl,
+                  },
+                })
+                .then((response) => {
+                  messageApi.open({
+                    key,
+                    type: "success",
+                    content: "Artigo criado com sucesso.",
+                    duration: 2,
+                  });
+                });
+            }}
+          >
+            Enviar
+          </Button>
+        </Col>
+      </Row>
     </Space>
   );
 }
