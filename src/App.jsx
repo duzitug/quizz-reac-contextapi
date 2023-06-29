@@ -17,6 +17,8 @@ import Estrutura from "../components/Estrutura.jsx";
 import Login from "../components/Login.jsx";
 import LoginContextProvider from "../context/AuthContextProvider.jsx";
 import LoginPage from "../page/LoginPage.jsx";
+import RichTextEditor from "../components/RichTextEditor.jsx";
+import ArticleView from "../components/ArticleView.jsx";
 
 function App() {
   const [quizzState] = React.useContext(QuizzContext);
@@ -31,6 +33,12 @@ function App() {
             <Route path="/" element={<Home />} />
 
             <Route path="/login" element={<LoginPage />} />
+
+            <Route path="/articleView" element={<ArticleView />}>
+              <Route path=":slug" element={<ArticleView />} />
+            </Route>
+
+            <Route path="/createArticle" element={<RichTextEditor />} />
 
             <Route path="/userSignIn" element={<UserSignIn />} />
             <Route path="/userSignUp" element={<UserSignUp />} />
