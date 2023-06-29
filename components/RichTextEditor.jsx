@@ -35,6 +35,7 @@ let quillRef = null;
 
 function RichTextEditor() {
   const [value, setValue] = React.useState("");
+  const [imageUrl, setImageUrl] = React.useState("");
   const [messageApi, contextHolder] = message.useMessage();
   const key = "updatable";
 
@@ -95,6 +96,8 @@ function RichTextEditor() {
               setLoading(false);
 
               const url = await getDownloadURL(snapshot.ref);
+
+              setImageUrl(url);
 
               const range = reactQuillRef.getEditor().getSelection();
 
@@ -160,6 +163,7 @@ function RichTextEditor() {
                 title: "titulo do artigo 2",
                 description: "description 2",
                 body: value,
+                imageUrl,
               },
             })
             .then((response) => {
