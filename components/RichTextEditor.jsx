@@ -163,12 +163,9 @@ function RichTextEditor() {
             }}
             theme="snow"
             value={value}
-            onChange={(value) => {
-              setValue(value);
-            }}
+            onChange={setValue}
             formats={formats}
             modules={modules}
-            style={{}}
             placeholder="Escreva aqui"
           />
         </Col>
