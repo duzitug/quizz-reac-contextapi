@@ -133,7 +133,7 @@ function RichTextEditor() {
             placeholder="Título do artigo"
             name="title"
             value={title}
-            onchange={setTitle}
+            onChange={(event) => setTitle(event.target.value)}
           />
         </Col>
       </Row>
@@ -144,7 +144,7 @@ function RichTextEditor() {
             placeholder="descrição"
             name="description"
             value={description}
-            onchange={setDescription}
+            onChange={(event) => setDescription(event.target.value)}
           />
         </Col>
       </Row>
