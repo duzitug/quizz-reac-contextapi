@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { FloatButton, Spin, Pagination } from "antd";
+import { FloatButton, Spin, Pagination, Space, Row, Col } from "antd";
 
 import Hero from "../../components/Hero.jsx";
 import ArticlePreviewCard from "../../components/ArticlePreview.jsx";
@@ -35,15 +35,29 @@ function HomePage() {
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
+    setLoading(true);
   };
 
   return (
-    <>
-      <Hero />
+    <Space
+      direction="vertical"
+      style={{
+        display: "flex",
+      }}
+    >
+      <Row>
+        <Col span={16} style={{ margin: "auto" }}>
+          <Hero />
+        </Col>
+      </Row>
 
-      <Spin spinning={loading}>
-        <ArticlePreviewCard articles={articles} />
-      </Spin>
+      <Row>
+        <Col span={16} style={{ margin: "auto" }}>
+          <Spin spinning={loading}>
+            <ArticlePreviewCard articles={articles} />
+          </Spin>
+        </Col>
+      </Row>
 
       {value && (
         <FloatButton
@@ -55,15 +69,19 @@ function HomePage() {
         />
       )}
 
-      {totalPages > 0 && (
-        <Pagination
-          current={currentPage}
-          total={totalPages}
-          pageSize={itemsPerPage}
-          onChange={handlePageChange}
-        />
-      )}
-    </>
+      <Row>
+        <Col span={16} style={{ margin: "auto", textAlign: "center" }}>
+          {totalPages > 0 && (
+            <Pagination
+              current={currentPage}
+              total={totalPages}
+              pageSize={itemsPerPage}
+              onChange={handlePageChange}
+            />
+          )}
+        </Col>
+      </Row>
+    </Space>
   );
 }
 export default HomePage;
