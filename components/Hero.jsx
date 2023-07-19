@@ -1,32 +1,26 @@
 import React from "react";
-import { Row, Col, Typography, Button, Image } from "antd";
+import { Row, Col, Typography } from "antd";
+
+import AuthContext from "../context/AuthContext.js";
 
 const { Title, Text } = Typography;
 
-const Hero = () => {
+function Hero() {
+  const { value } = React.useContext(AuthContext);
+
   return (
-    <Row justify="center">
-      <Col style={{ textAlign: "center" }}>
-        <Image
-          style={{ maxWidth: "60%" }}
-          src="../public/transistor-science.gif"
-        ></Image>
+    <>
+      <Title level={1}>Ipojuca Science</Title>
 
-        <Title level={1}>Ipojuca Science</Title>
+      <img
+        alt="Ipojuca Science"
+        src="../gummy-medical-lab-456x456.png"
+        style={{ width: "25%" }}
+      ></img>
 
-        {/* <Title level={4}>Ingrid Lima</Title> */}
-
-        {/* <Button>Botão</Button> */}
-      </Col>
-      {/* <Col xs={24} md={12}>
-        <img
-          src="../public/bubble-gum-test-tubes-and-flask.gif"
-          alt="Imagem"
-          style={{ maxWidth: "100%" }}
-        />
-      </Col> */}
-    </Row>
+      {/* <p> {value} </p> */}
+    </>
   );
-};
+}
 
 export default Hero;
