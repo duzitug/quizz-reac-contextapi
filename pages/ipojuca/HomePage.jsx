@@ -13,16 +13,17 @@ function HomePage() {
   const [articles, setArticles] = React.useState([]);
   const [totalPages, setTotalPages] = React.useState(0);
   const [currentPage, setCurrentPage] = React.useState(1);
-  const itemsPerPage = 2;
 
   const { value } = React.useContext(AuthContext);
 
   const navigate = useNavigate();
 
+  const itemsPerPage = 2;
+
   React.useEffect(() => {
     axios
       .get(
-        `https://quiz-backend-nodejs-express.fly.dev/api/article/listArticleWithPagination?limit=${itemsPerPage}&offset=${
+        `http://127.0.0.1:3000/api/article/listArticleWithPagination?limit=${itemsPerPage}&offset=${
           (currentPage - 1) * itemsPerPage
         }`
       )
@@ -41,23 +42,27 @@ function HomePage() {
   return (
     <Space
       direction="vertical"
+      size="small"
       style={{
         display: "flex",
       }}
     >
-      <Row>
-        <Col span={16} style={{ margin: "auto" }}>
+      <Row style={{ justifyContent: "center" }}>
+        <Col
+          span={16}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
           <Hero />
         </Col>
       </Row>
 
-      <Row>
-        <Col span={16} style={{ margin: "auto" }}>
-          <Spin spinning={loading}>
-            <ArticlePreviewCard articles={articles} />
-          </Spin>
-        </Col>
-      </Row>
+      <Spin spinning={loading}>
+        <ArticlePreviewCard articles={articles} />
+      </Spin>
 
       {value && (
         <FloatButton
@@ -69,8 +74,8 @@ function HomePage() {
         />
       )}
 
-      <Row>
-        <Col span={16} style={{ margin: "auto", textAlign: "center" }}>
+      <Row style={{ justifyContent: "center", marginTop: "1rem" }}>
+        <Col span={16} style={{ display: "flex", justifyContent: "center" }}>
           {totalPages > 0 && (
             <Pagination
               current={currentPage}
