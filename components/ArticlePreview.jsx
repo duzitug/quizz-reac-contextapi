@@ -44,22 +44,25 @@ const ArticlePreviewCard = ({
         size="middle"
         style={{
           display: "flex",
-          marginTop: "1rem",
+          flexDirection: "column",
+          alignItems: "center",
         }}
       >
         {articles?.map((article) => (
-          <Row>
-            <Col span={16} style={{ margin: "auto" }}>
+          <Row style={{ justifyContent: "center" }}>
+            <Col span={16}>
               <Card hoverable>
-                <Row>
-                  <Col span={8}>
+                <Row style={{ display: "flex" }}>
+                  <Col span={8} style={{ display: "flex" }}>
                     <img
                       alt="Imagem do artigo"
-                      src={image}
-                      style={{ width: "50%" }}
+                      src={article.imageUrl}
+                      style={{ width: "80%" }}
                     />
                   </Col>
-                  <Col span={16}>{article.title}</Col>
+                  <Col span={16} style={{ display: "flex" }}>
+                    {article.title}
+                  </Col>
                 </Row>
               </Card>
             </Col>
