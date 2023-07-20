@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import { Layout, Space } from "antd";
 import Cabecalho from "./Header.jsx";
 import Hero from "./Hero.jsx";
-import ArticlePreviewCard from "./CartaoPreVisualizacaoArtigo.jsx";
+import ArticlePreviewCard from "./ArticlePreview.jsx";
 const { Header, Footer, Content } = Layout;
 
 const Estrutura = () => (
@@ -11,7 +11,7 @@ const Estrutura = () => (
     style={{
       width: "100%",
     }}
-    size={[0, 48]}
+    size={"middle"}
   >
     <Layout>
       <Header style={{ backgroundColor: "white" }}>
