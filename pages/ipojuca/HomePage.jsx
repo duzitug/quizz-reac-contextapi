@@ -25,7 +25,7 @@ function HomePage() {
       .get(
         `http://127.0.0.1:3000/api/article/listArticleWithPagination?limit=${itemsPerPage}&offset=${
           (currentPage - 1) * itemsPerPage
-        }`
+        }`,
       )
       .then((response) => {
         setArticles(response.data.rows);
