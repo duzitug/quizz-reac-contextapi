@@ -10,24 +10,23 @@ function Hero() {
 
   return (
     <>
-      <Space direction="vertical" style={{ justifyContent: "center" }}>
-        <Row style={{ justifyContent: "center" }}>
+      <Space
+        direction="vertical"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <Row align="center">
           <Title level={1}>Ipojuca Science</Title>
         </Row>
 
-        <Row style={{ justifyContent: "center" }}>
+        <Row align="center">
           <Title level={5}>Um blog sore ciência.</Title>
         </Row>
 
-        <Row style={{ justifyContent: "center", marginTop: "1rem" }}>
-          <Button
-            size="large"
-            style={{
-              width: "50%",
-            }}
-          >
-            Entrar
-          </Button>
+        <Row align="center" style={{ marginTop: "1rem" }}>
+          <Button size="large">Entrar</Button>
         </Row>
       </Space>
 
@@ -40,10 +39,7 @@ function Hero() {
         ></Image>
       </Row> */}
 
-      <Row
-        style={{ margin: "1rem", marginTop: "2rem", justifyContent: "center" }}
-        span
-      >
+      <Row style={{ margin: "1rem", marginTop: "2rem" }} span>
         <img
           src="./undraw_mobile_user_re_xta4-preto.svg"
           alt=""
