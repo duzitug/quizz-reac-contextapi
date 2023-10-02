@@ -25,7 +25,7 @@ function PaginaInicial() {
       .get(
         `http://127.0.0.1:3000/api/article/listArticleWithPagination?limit=${itensPorPagina}&offset=${
           (paginaAtual - 1) * itensPorPagina
-        }`
+        }`,
       )
       .then((resposta) => {
         setArtigos(resposta.data.rows);
