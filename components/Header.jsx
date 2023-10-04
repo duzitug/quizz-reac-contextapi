@@ -24,17 +24,16 @@ const items = [
     ],
   },
 ];
-const Cabecalho = () => {
+function Cabecalho() {
   const [current, setCurrent] = useState("mail");
 
   const navigate = useNavigate();
   const onClick = (e) => {
     console.log("click ", e);
     setCurrent(e.key);
-    e.key === "tmp-1" ? console.log("tmp-1") : console.log("tmp-0");
 
-    if (e.key === "tmp-0") navigate("/login");
-    else navigate("sobre");
+    if (e.key === "tmp-1") navigate("/login");
+    else if (e.key === "tmp-0") navigate("/");
   };
   return (
     <Menu
@@ -44,5 +43,5 @@ const Cabecalho = () => {
       items={items}
     />
   );
-};
+}
 export default Cabecalho;

@@ -5,7 +5,7 @@ import QuizzContext from "../context/quizzContext.js";
 import Welcome from "../components/Welcome.jsx";
 import Question from "../components/Question.jsx";
 import GameOver from "../components/GameOver.jsx";
-import Home from "../components/Home.jsx";
+import PaginaInicial from "../pages/ipojuca/PaginaInicial.jsx";
 import UserSignIn from "../components/UserSignIn.jsx";
 import UserSignUp from "../components/UserSignUp.jsx";
 import CreateQuestion from "../components/CreateQuestion.jsx";
@@ -16,9 +16,12 @@ import Hero from "../components/Hero.jsx";
 import Estrutura from "../components/Estrutura.jsx";
 import Login from "../components/Login.jsx";
 import LoginContextProvider from "../context/AuthContextProvider.jsx";
-import LoginPage from "../page/LoginPage.jsx";
+import LoginPage from "../pages/ipojuca/LoginPage.jsx";
 import RichTextEditor from "../components/RichTextEditor.jsx";
-import ArticleView from "../components/ArticleView.jsx";
+import ArticleView from "../pages/ipojuca/ArticleView.jsx";
+import Pagination from "../components/Ipojuca/ArticlePagination.jsx";
+import BotaoFavoritar from "../components/BotaoFavoritar.jsx";
+import LinkFavoritar from "../components/LinkFavoritar.jsx";
 
 function App() {
   const [quizzState] = React.useContext(QuizzContext);
@@ -30,12 +33,17 @@ function App() {
           {/* <Route path="/" element={<Hero />} /> */}
 
           <Route element={<Estrutura />}>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<PaginaInicial />} />
+
+            <Route path="/botaoFavoritar" element={<BotaoFavoritar />} />
+            <Route path="/linkFavoritar" element={<LinkFavoritar />} />
 
             <Route path="/login" element={<LoginPage />} />
 
+            <Route path="/pagination" element={<Pagination />} />
+
             <Route path="/articleView" element={<ArticleView />}>
-              <Route path=":slug" element={<ArticleView />} />
+              <Route path=":id" element={<ArticleView />} />
             </Route>
 
             <Route path="/createArticle" element={<RichTextEditor />} />

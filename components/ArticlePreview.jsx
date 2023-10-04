@@ -10,7 +10,7 @@ const ArticlePreviewCard = ({
   date,
   description,
   image,
-  articles,
+  artigos,
 }) => {
   return (
     <>
@@ -48,7 +48,7 @@ const ArticlePreviewCard = ({
           alignItems: "center",
         }}
       >
-        {articles?.map((article) => (
+        {artigos?.map((artigo) => (
           <Row style={{ justifyContent: "center" }}>
             <Col span={16}>
               <Card hoverable>
@@ -56,12 +56,12 @@ const ArticlePreviewCard = ({
                   <Col span={8} style={{ display: "flex" }}>
                     <img
                       alt="Imagem do artigo"
-                      src={article.imageUrl}
+                      src={artigo.imageUrl}
                       style={{ width: "80%" }}
                     />
                   </Col>
                   <Col span={16} style={{ display: "flex" }}>
-                    {article.title}
+                    {artigo.title}
                   </Col>
                 </Row>
               </Card>

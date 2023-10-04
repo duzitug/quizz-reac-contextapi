@@ -9,6 +9,8 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { Button, Spin, Space, message, Input, Row, Col } from "antd";
 
+import pica from "pica";
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyD_RJeXxSxpw7LXZ5RWK_zUWwGXR7nv3M4",
@@ -83,10 +85,9 @@ function RichTextEditor() {
             input.click();
 
             input.onchange = async () => {
-              const file = input.files[0];
-              const formData = new FormData();
+              // como redimensionar a imagem com o pica?
 
-              formData.append("image", file);
+              const file = input.files[0];
 
               const fileName = file.name;
 

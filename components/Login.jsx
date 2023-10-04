@@ -4,7 +4,12 @@ import axios from "axios";
 
 function Login({ onFinish }) {
   return (
-    <Form onFinish={onFinish} style={{ width: "50%" }}>
+    <Form
+      onFinish={onFinish}
+      labelCol={{
+        span: 8,
+      }}
+    >
       <Form.Item
         label="Email"
         name="email"
@@ -21,7 +26,11 @@ function Login({ onFinish }) {
         <Input.Password />
       </Form.Item>
 
-      <Form.Item>
+      <Form.Item
+        wrapperCol={{
+          offset: 8,
+        }}
+      >
         <Button type="primary" htmlType="submit">
           Entrar
         </Button>

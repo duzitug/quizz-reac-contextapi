@@ -1,8 +1,14 @@
 import axios from "axios";
 
-async function userSignIn({ email, password }) {
+async function userSignIn({ email, password, userToken }) {
   const { data } = await axios({
-    data: { email, password },
+    data: {
+      email,
+      password,
+      headers: {
+        Cookie: `userToken=${userToken}`,
+      },
+    },
     method: "POST",
     url: `https://quizz-backend-nodejs-express.herokuapp.com/user/signIn`,
   });
