@@ -6,13 +6,12 @@ function CriarArtigo() {
   const [artigo, mudarArtigo] = React.useState({
     titulo: "titulo",
     corpo: "corpo",
-    slug: "slug",
     descricao: "descricao",
   });
 
   const criarArtigo = async () => {
     const resposta = await axios({
-      url: "http://localhost:3001/api/artigo",
+      url: "http://localhost:3001/api/artigo?nome=mercio&idade=34&bairro=cordeiro",
       method: "POST",
       data: { artigo },
       headers: {
@@ -40,13 +39,6 @@ function CriarArtigo() {
         placeholder="corpo"
         value={artigo.corpo}
         onChange={(e) => mudarArtigo({ ...artigo, corpo: e.target.value })}
-      />
-
-      <input
-        type="text"
-        placeholder="slug"
-        value={artigo.slug}
-        onChange={(e) => mudarArtigo({ ...artigo, slug: e.target.value })}
       />
 
       <input
