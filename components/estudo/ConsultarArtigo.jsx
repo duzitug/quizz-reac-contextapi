@@ -2,12 +2,16 @@ import React from "react";
 
 import axios from "axios";
 
+import { ContextoArtigo } from "../estudo/ProvedorContextoArtigo.jsx";
+
 function ConsultarArtigo() {
   const [artigo, mudarArtigo] = React.useState({});
 
   const [tituloComprimido, mudarTituloComprimido] = React.useState("titulo-7");
 
   const [buscar, mudarBuscar] = React.useState(false);
+
+  const contextoArtigo = React.useContext(ContextoArtigo);
 
   React.useEffect(() => {
     axios({
@@ -35,6 +39,16 @@ function ConsultarArtigo() {
       <h1>{tituloComprimido}</h1>
 
       <h1 onClick={() => mudarBuscar(!buscar)}>Clique para buscar</h1>
+
+      <h1>{contextoArtigo.estado}</h1>
+      <h1
+        onClick={() => {
+          contextoArtigo.mudarEstado("alterado");
+          localStorage.setItem("teste", JSON.stringify(contextoArtigo.estado));
+        }}
+      >
+        alterar
+      </h1>
     </div>
   );
 }
