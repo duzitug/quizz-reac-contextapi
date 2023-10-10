@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { FloatButton, Spin, Pagination, Space, Row, Col } from "antd";
 
+import { EditOutlined } from "@ant-design/icons";
+
 import Hero from "../../components/Hero.jsx";
 import ArticlePreviewCard from "../../components/ArticlePreview.jsx";
 
@@ -53,18 +55,16 @@ function PaginaInicial() {
           <Hero />
         </Col>
       </Row>
-
       <Spin spinning={carregando}>
         <ArticlePreviewCard artigos={artigos} />
       </Spin>
 
       {value && (
         <FloatButton
-          icon={<img src="/public/icons8-signing-a-document-50.png"></img>}
+          icon={<EditOutlined />}
+          tooltip={<div>Escrever Artigo</div>}
           shape="circle"
-          description={"Criar Artigo"}
           onClick={() => navegar("/createArticle")}
-          style={{ width: "90px", height: "90px" }}
         />
       )}
 
