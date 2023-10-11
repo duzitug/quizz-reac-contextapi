@@ -65,16 +65,17 @@ function RichTextEditor() {
       toolbar: {
         container: [
           [{ header: [1, 2, false] }],
-          ["bold", "italic", "underline", "strike", "blockquote"],
+          [{ indent: "-1" }, { indent: "+1" }],
           [
+            "bold",
+            "blockquote",
+            "image",
+            "link",
             { list: "ordered" },
             { list: "bullet" },
-            { indent: "-1" },
-            { indent: "+1" },
           ],
-          [{ align: ["center", "right", "justify"] }],
-          ["link", "image"],
-          ["clean"],
+          // [{ align: ["center", "right", "justify"] }],
+          ["italic", "underline", "strike", "clean"],
         ],
         handlers: {
           image: () => {
@@ -85,8 +86,7 @@ function RichTextEditor() {
             input.click();
 
             input.onchange = async () => {
-              // como redimensionar a imagem com o pica?
-
+              debugger;
               const file = input.files[0];
 
               const fileName = file.name;
@@ -128,8 +128,8 @@ function RichTextEditor() {
     >
       {contextHolder}
 
-      <Row>
-        <Col style={{ margin: "auto" }} span={16}>
+      <Row justify={"center"}>
+        <Col span={16}>
           <Input
             placeholder="Título do artigo"
             name="title"
@@ -139,8 +139,8 @@ function RichTextEditor() {
         </Col>
       </Row>
 
-      <Row>
-        <Col style={{ margin: "auto" }} span={16}>
+      <Row justify={"center"}>
+        <Col span={16}>
           <Input
             placeholder="descrição"
             name="description"
@@ -156,8 +156,8 @@ function RichTextEditor() {
         </div>
       )}
 
-      <Row>
-        <Col style={{ margin: "auto" }} span={16}>
+      <Row justify={"center"}>
+        <Col span={16}>
           <ReactQuill
             ref={(el) => {
               reactQuillRef = el;
@@ -172,9 +172,10 @@ function RichTextEditor() {
         </Col>
       </Row>
 
-      <Row>
-        <Col style={{ margin: "auto" }} span={16}>
+      <Row justify={"center"}>
+        <Col span={16}>
           <Button
+            style={{}}
             onClick={() => {
               messageApi.open({
                 key,
