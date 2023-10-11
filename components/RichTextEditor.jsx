@@ -11,6 +11,41 @@ import { Button, Spin, Space, message, Input, Row, Col } from "antd";
 
 import pica from "pica";
 
+import Resizer from "react-image-file-resizer";
+
+const resizeFile = (file) =>
+  new Promise((resolve) => {
+    Resizer.imageFileResizer(
+      file,
+      300,
+      300,
+      "JPEG",
+      100,
+      0,
+      (uri) => {
+        resolve(uri);
+      },
+      "base64"
+    );
+  });
+
+function redimensionarImagem(arquivo) {
+  return new Promise((resolver) => {
+    Resizer.imageFileResizer(
+      arquivo,
+      800,
+      600,
+      "JPEG",
+      100,
+      0,
+      (uri) => {
+        resolver(uri);
+      },
+      "file"
+    );
+  });
+}
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyD_RJeXxSxpw7LXZ5RWK_zUWwGXR7nv3M4",
@@ -87,15 +122,20 @@ function RichTextEditor() {
 
             input.onchange = async () => {
               debugger;
-              const file = input.files[0];
+              const imagem = input.files[0];
 
-              const fileName = file.name;
+              const nomeImagem = imagem.name;
 
-              const storageRef = ref(storage, `images/${fileName}`);
+              const imagemRedimensionada = await redimensionarImagem(imagem);
+
+              const storageRef = ref(storage, `images/${nomeImagem}`);
 
               setLoading(true);
 
-              const snapshot = await uploadBytes(storageRef, file);
+              const snapshot = await uploadBytes(
+                storageRef,
+                imagemRedimensionada
+              );
 
               setLoading(false);
 
