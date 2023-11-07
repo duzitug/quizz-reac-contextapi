@@ -9,8 +9,6 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { Button, Spin, Space, message, Input, Row, Col } from "antd";
 
-import pica from "pica";
-
 import Resizer from "react-image-file-resizer";
 
 const resizeFile = (file) =>
@@ -33,8 +31,8 @@ function redimensionarImagem(arquivo) {
   return new Promise((resolver) => {
     Resizer.imageFileResizer(
       arquivo,
-      800,
-      600,
+      300,
+      300,
       "JPEG",
       100,
       0,
@@ -100,7 +98,6 @@ function RichTextEditor() {
       toolbar: {
         container: [
           [{ header: [1, 2, false] }],
-          [{ indent: "-1" }, { indent: "+1" }],
           [
             "bold",
             "blockquote",
@@ -124,11 +121,11 @@ function RichTextEditor() {
               debugger;
               const imagem = input.files[0];
 
-              const nomeImagem = imagem.name;
+              const nome = imagem.name;
 
               const imagemRedimensionada = await redimensionarImagem(imagem);
 
-              const storageRef = ref(storage, `images/${nomeImagem}`);
+              const storageRef = ref(storage, `images/${nome}`);
 
               setLoading(true);
 
@@ -169,7 +166,7 @@ function RichTextEditor() {
       {contextHolder}
 
       <Row justify={"center"}>
-        <Col span={16}>
+        <Col span={8}>
           <Input
             placeholder="Título do artigo"
             name="title"
@@ -180,7 +177,7 @@ function RichTextEditor() {
       </Row>
 
       <Row justify={"center"}>
-        <Col span={16}>
+        <Col span={8}>
           <Input
             placeholder="descrição"
             name="description"
@@ -197,7 +194,7 @@ function RichTextEditor() {
       )}
 
       <Row justify={"center"}>
-        <Col span={16}>
+        <Col span={8}>
           <ReactQuill
             ref={(el) => {
               reactQuillRef = el;
@@ -208,12 +205,15 @@ function RichTextEditor() {
             formats={formats}
             modules={modules}
             placeholder="Escreva aqui"
+            style={{
+              fontSize: "18px",
+            }}
           />
         </Col>
       </Row>
 
       <Row justify={"center"}>
-        <Col span={16}>
+        <Col span={8}>
           <Button
             style={{}}
             onClick={() => {
