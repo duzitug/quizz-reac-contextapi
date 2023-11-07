@@ -49,19 +49,20 @@ const ArticlePreviewCard = ({
         }}
       >
         {artigos?.map((artigo) => (
-          <Row style={{ justifyContent: "center" }}>
+          <Row justify={"center"}>
             <Col span={16}>
               <Card hoverable>
-                <Row style={{ display: "flex" }}>
-                  <Col span={8} style={{ display: "flex" }}>
+                <Row>
+                  <Col span={8}>
                     <img
                       alt="Imagem do artigo"
                       src={artigo.imageUrl}
                       style={{ width: "80%" }}
                     />
                   </Col>
-                  <Col span={16} style={{ display: "flex" }}>
+                  <Col span={16}>
                     {artigo.title}
+                    {artigo.description}
                   </Col>
                 </Row>
               </Card>
