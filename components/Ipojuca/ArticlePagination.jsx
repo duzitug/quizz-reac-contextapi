@@ -13,7 +13,7 @@ function ArticlePagination() {
       .get(
         `https://quiz-backend-nodejs-express.fly.dev/api/article/listArticleWithPagination?limit=${itemsPerPage}&offset=${
           (currentPage - 1) * itemsPerPage
-        }`
+        }`,
       )
       .then((response) => {
         setArticles(response.data.rows);

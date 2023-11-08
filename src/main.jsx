@@ -8,5 +8,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <QuizzContextProvider>
       <App />
     </QuizzContextProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

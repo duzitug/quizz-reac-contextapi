@@ -23,7 +23,7 @@ const resizeFile = (file) =>
       (uri) => {
         resolve(uri);
       },
-      "base64"
+      "base64",
     );
   });
 
@@ -39,7 +39,7 @@ function redimensionarImagem(arquivo) {
       (uri) => {
         resolver(uri);
       },
-      "file"
+      "file",
     );
   });
 }
@@ -131,7 +131,7 @@ function RichTextEditor() {
 
               const snapshot = await uploadBytes(
                 storageRef,
-                imagemRedimensionada
+                imagemRedimensionada,
               );
 
               setLoading(false);

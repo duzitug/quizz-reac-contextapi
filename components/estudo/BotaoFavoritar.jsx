@@ -42,7 +42,7 @@ function BotaoFavoritar() {
             autorizacao:
               "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1vbmljYUBlbWFpbC5jb20iLCJpYXQiOjE2OTUwNzY2MzN9.V10XgMQlR7jeOICcl3ZP_jzAgI-98HGX0LEqlH_XqHc",
           },
-        }
+        },
       );
       mudarFavoritado(resposta.data.artigo.favoritado);
     } else if (favoritado === true) {
@@ -53,7 +53,7 @@ function BotaoFavoritar() {
             autorizacao:
               "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1vbmljYUBlbWFpbC5jb20iLCJpYXQiOjE2OTUwNzY2MzN9.V10XgMQlR7jeOICcl3ZP_jzAgI-98HGX0LEqlH_XqHc",
           },
-        }
+        },
       );
       mudarFavoritado(false);
     }
