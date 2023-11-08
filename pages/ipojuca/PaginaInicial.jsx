@@ -29,7 +29,7 @@ function PaginaInicial() {
       .get(
         `https://nodejs-merciof-dev.fly.dev/api/article/listArticleWithPagination?limit=${itensPorPagina}&offset=${
           (paginaAtual - 1) * itensPorPagina
-        }`
+        }`,
       )
       .then((resposta) => {
         setArtigos(resposta.data.rows);
