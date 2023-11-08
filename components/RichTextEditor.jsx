@@ -166,7 +166,7 @@ function RichTextEditor() {
       {contextHolder}
 
       <Row justify={"center"}>
-        <Col span={8}>
+        <Col span={12}>
           <Input
             placeholder="Título do artigo"
             name="title"
@@ -177,7 +177,7 @@ function RichTextEditor() {
       </Row>
 
       <Row justify={"center"}>
-        <Col span={8}>
+        <Col span={12}>
           <Input
             placeholder="descrição"
             name="description"
@@ -194,7 +194,7 @@ function RichTextEditor() {
       )}
 
       <Row justify={"center"}>
-        <Col span={8}>
+        <Col span={12}>
           <ReactQuill
             ref={(el) => {
               reactQuillRef = el;
@@ -213,7 +213,7 @@ function RichTextEditor() {
       </Row>
 
       <Row justify={"center"}>
-        <Col span={8}>
+        <Col span={12}>
           <Button
             style={{}}
             onClick={() => {
@@ -224,7 +224,7 @@ function RichTextEditor() {
               });
 
               axios
-                .post("http://localhost:3000/api/article", {
+                .post("https://nodejs-merciof-dev.fly.dev/api/article", {
                   article: {
                     title,
                     description,
