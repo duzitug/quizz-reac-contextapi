@@ -39,16 +39,7 @@ const ArticlePreviewCard = ({
         </Row>
       </Card> */}
 
-      <Space
-        direction="vertical"
-        size="middle"
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        {artigos?.map((artigo) => (
+      {/* {artigos?.map((artigo) => (
           <Row justify={"center"}>
             <Col span={16}>
               <Card hoverable>
@@ -68,8 +59,27 @@ const ArticlePreviewCard = ({
               </Card>
             </Col>
           </Row>
-        ))}
-      </Space>
+        ))} */}
+
+      <Row justify={"space-around"}>
+        {artigos?.map((artigo) => {
+          return (
+            <Col span={6}>
+              <Card
+                hoverable
+                cover={
+                  <img
+                    alt="example"
+                    src="https://firebasestorage.googleapis.com/v0/b/projeto-teste-7dcf3.appspot.com/o/images%2F1656348631197.jpeg?alt=media&token=09f30955-973b-421a-bab0-e67b4509bc18"
+                  />
+                }
+              >
+                <Meta title={artigo.title} description={artigo.description} />
+              </Card>
+            </Col>
+          );
+        })}
+      </Row>
     </>
   );
 };
