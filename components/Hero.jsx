@@ -14,19 +14,18 @@ function Hero() {
         direction="vertical"
         style={{
           display: "flex",
-          flexDirection: "column",
         }}
       >
-        <Row align="center">
-          <Title level={1}>Ipojuca Science</Title>
-        </Row>
+        <Title level={1} align="center">
+          Ipojuca Science
+        </Title>
 
-        <Row align="center">
-          <Title level={5}>Um blog sore ciência.</Title>
-        </Row>
+        <Title level={5} align="center">
+          Um blog sore ciência.
+        </Title>
 
-        <Row align="center" style={{ marginTop: "1rem" }}>
-          <Button size="large">Entrar</Button>
+        <Row justify={"center"} style={{ marginTop: "1rem" }}>
+          <Button size="large">Ver Artigos</Button>
         </Row>
       </Space>
 
