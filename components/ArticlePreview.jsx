@@ -61,20 +61,36 @@ const ArticlePreviewCard = ({
           </Row>
         ))} */}
 
-      <Row justify={"space-around"}>
+      <Row
+        justify={"space-around"}
+        wrap
+        gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}
+      >
         {artigos?.map((artigo) => {
           return (
-            <Col span={6}>
+            <Col span={8} style={{ marginBottom: "1rem" }}>
               <Card
                 hoverable
                 cover={
-                  <img
-                    alt="example"
-                    src="https://firebasestorage.googleapis.com/v0/b/projeto-teste-7dcf3.appspot.com/o/images%2F1656348631197.jpeg?alt=media&token=09f30955-973b-421a-bab0-e67b4509bc18"
-                  />
+                  <div style={{ display: "flex", justifyContent: "center" }}>
+                    <img
+                      alt="example"
+                      src="https://firebasestorage.googleapis.com/v0/b/projeto-teste-7dcf3.appspot.com/o/images%2F1656348631197.jpeg?alt=media&token=09f30955-973b-421a-bab0-e67b4509bc18"
+                      style={{ width: "60%" }}
+                    />
+                  </div>
                 }
               >
-                <Meta title={artigo.title} description={artigo.description} />
+                <Meta
+                  title={
+                    <div style={{ textAlign: "center" }}>{artigo.title}</div>
+                  }
+                  description={
+                    <div style={{ textAlign: "center" }}>
+                      {artigo.description}
+                    </div>
+                  }
+                />
               </Card>
             </Col>
           );
