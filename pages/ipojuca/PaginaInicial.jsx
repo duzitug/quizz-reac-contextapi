@@ -22,7 +22,7 @@ function PaginaInicial() {
 
   const navegar = useNavigate();
 
-  const itensPorPagina = 2;
+  const itensPorPagina = 6;
 
   React.useEffect(() => {
     axios
@@ -53,11 +53,12 @@ function PaginaInicial() {
           flexDirection: "column",
         }}
       >
-        <Row align={"center"}>
+        <Row justify={"center"}>
           <Col span={18}>
             <Hero />
           </Col>
         </Row>
+
         <Spin spinning={carregando}>
           <ArticlePreviewCard artigos={artigos} />
         </Spin>
@@ -71,58 +72,14 @@ function PaginaInicial() {
           />
         )}
 
-        <Row align={"center"}>
-          <Col span="6">
-            <Card
-              hoverable
-              cover={
-                <img
-                  alt="example"
-                  src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-                />
-              }
-            >
-              <Meta
-                title="Europe Street beat"
-                description="www.instagram.com"
-              />
-            </Card>
-          </Col>
-          <Col span="6">
-            <Card
-              hoverable
-              cover={
-                <img
-                  alt="example"
-                  src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-                />
-              }
-            >
-              <Meta
-                title="Europe Street beat"
-                description="www.instagram.com"
-              />
-            </Card>
-          </Col>
-          <Col span="6">
-            <Card
-              hoverable
-              cover={
-                <img
-                  alt="example"
-                  src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-                />
-              }
-            >
-              <Meta
-                title="Europe Street beat"
-                description="www.instagram.com"
-              />
-            </Card>
-          </Col>
-        </Row>
+        <FloatButton
+          icon={<EditOutlined />}
+          tooltip={<div>Escrever Artigo</div>}
+          shape="circle"
+          onClick={() => navegar("/createArticle")}
+        />
 
-        <Row style={{ marginTop: "1rem" }}>
+        <Row style={{ marginTop: "1rem" }} justify={"center"}>
           {/* Por que o alinhamento ao centro só funciona diretamente na coluna? */}
           <Col span={18} align={"center"}>
             {totalDePaginas > 0 && (
@@ -136,49 +93,6 @@ function PaginaInicial() {
           </Col>
         </Row>
       </Space>
-
-      {/* or que o justify atraves da propriedade não funciona? */}
-      <Row style={{ justifyContent: "space-evenly" }}>
-        <Col span="6">
-          <Card
-            hoverable
-            cover={
-              <img
-                alt="example"
-                src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-              />
-            }
-          >
-            <Meta title="Europe Street beat" description="www.instagram.com" />
-          </Card>
-        </Col>
-        <Col span="6">
-          <Card
-            hoverable
-            cover={
-              <img
-                alt="example"
-                src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-              />
-            }
-          >
-            <Meta title="Europe Street beat" description="www.instagram.com" />
-          </Card>
-        </Col>
-        <Col span="6">
-          <Card
-            hoverable
-            cover={
-              <img
-                alt="example"
-                src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-              />
-            }
-          >
-            <Meta title="Europe Street beat" description="www.instagram.com" />
-          </Card>
-        </Col>
-      </Row>
     </>
   );
 }
